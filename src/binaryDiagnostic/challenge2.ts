@@ -1,26 +1,10 @@
-const bits: string[] = `00100
-11110
-10110
-10111
-10101
-01111
-00111
-11100
-10000
-11001
-00010
-01010`
-  .split("\n")
-  .map((value) => value.trim())
-  .filter(function (value) {
-    return value !== "";
-  });
+import input from "./index";
 
-const colCounts = bits[0]
+const colCounts = input[0]
   .split("")
   .map((_) => ({ zerosCount: 0, onescount: 0 }));
 
-for (const bit of bits) {
+for (const bit of input) {
   for (let i = 0; i < bit.length; i++) {
     const currVal = bit[i];
     if (currVal == "0") {

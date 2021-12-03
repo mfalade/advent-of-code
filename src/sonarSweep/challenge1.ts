@@ -1,7 +1,6 @@
-const allMeasurements = ``
-  .split("\n")
-  .filter((x) => x !== "")
-  .map(Number);
+import input from "./index";
+
+const allMeasurements = input.map(Number);
 
 const getNumberOfLargerMeasurements = (measurements: number[]): number => {
   let count: number = 0;

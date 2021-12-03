@@ -8,7 +8,8 @@
     "typescript": "^4.5.2"
   },
   "scripts": {
-    "test": "ts-node"
+    "test": "ts-node",
+    "mkdir": "ts-node ./lib/createChallengeDirectory.ts"
   },
   "devDependencies": {
     "@types/node": "^16.11.11",

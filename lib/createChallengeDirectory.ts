@@ -1,14 +1,14 @@
 import fs from "fs";
 import path from "path";
 
-import { INPUT_FILE_NAME } from "../baseConfig";
+import { INPUT_FILE_NAME, SOLUTIONS_DIRECTORY_NAME } from "../baseConfig";
 
 export interface ICreateChallengeDirectoryArgs {
   challengeName: string;
 }
 
 const getChallengeDirectoryPath = (challengeName: string): string => {
-  return path.join(process.cwd(), "src", challengeName);
+  return path.join(process.cwd(), SOLUTIONS_DIRECTORY_NAME, challengeName);
 };
 
 const getIndexFileContent = (challengeName: string): string =>

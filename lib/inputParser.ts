@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-import { INPUT_FILE_NAME } from "../baseConfig";
+import { INPUT_FILE_NAME, SOLUTIONS_DIRECTORY_NAME } from "../baseConfig";
 
 const rootPath = process.cwd();
 
@@ -19,7 +19,7 @@ const inputParser = ({ challengeDirName }: IInputParserArguments): string[] => {
   try {
     const inputFilePath = path.join(
       rootPath,
-      "src",
+      SOLUTIONS_DIRECTORY_NAME,
       challengeDirName,
       INPUT_FILE_NAME
     );

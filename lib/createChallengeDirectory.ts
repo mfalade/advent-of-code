@@ -23,9 +23,18 @@ const input: string[] = getParsedInput({
 export default input;
 `;
 
-const getChallengeFileContent = (): string => {
-  return `import input from "./index";`;
-};
+const getChallengeFileContent = (): string =>
+  `import input from "./index";
+import logger from "../../lib/logger";
+
+const runSolution = (input: string[]): any => {
+  // Solution goes here..
+  return "";
+}
+
+const solution = runSolution(input);
+logger.logSolution(solution);
+`;
 
 const createChallengeDirectory = ({
   challengeName,

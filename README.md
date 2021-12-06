@@ -18,7 +18,6 @@ yarn mkdir <challengeDirecoryName>
 ```
 yarn test src/squidGame/challengeOne.ts
 yarn test src/squidGame/challengeTwo.ts
-
 ```
 
 ### Lib

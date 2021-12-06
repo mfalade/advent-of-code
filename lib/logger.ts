@@ -1,8 +1,8 @@
 class Logger {
-  logSolution = (solution: any) => {
+  logSolution = (label: string, solution: any) => {
     console.log("");
     console.log("===========================");
-    console.log("Solution => ", solution);
+    console.log(`${label} => `, solution);
     console.log("===========================");
     console.log("");
   };

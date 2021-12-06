@@ -1,6 +1,3 @@
-import input from "./index";
-import logger from "../../lib/logger";
-
 const removeItemsNotMatchingPassValue = (
   bits: string[],
   targetIndex: number,
@@ -101,5 +98,4 @@ const runSolution = (input: string[]): any => {
   return parseInt(o2GenRating, 2) * parseInt(co2ScrubRating, 2);
 };
 
-const solution = runSolution(input);
-logger.logSolution(solution);
+export default runSolution;

@@ -1,10 +1,6 @@
-import input from "./index";
-import logger from "../../lib/logger";
-
 const runSolution = (input: string[]): any => {
   // Solution goes here..
-  return "";
-}
+  console.log(input);
+};
 
-const solution = runSolution(input);
-logger.logSolution(solution);
+export default runSolution;

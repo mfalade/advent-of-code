@@ -1,6 +1,3 @@
-import input from "./index";
-import logger from "../../lib/logger";
-
 type Axis = "x" | "y";
 
 export const getAxisValueFromCoordinate = (
@@ -14,41 +11,63 @@ export const getAxisValueFromCoordinate = (
   return Number(axes[1]);
 };
 
-const getCoordinates = (lines: any) => {
-  return input
-    .map((value) => value.split("->").map((coordinate) => coordinate.trim()))
-    .map((line) => {
-      const startCoord = line[0];
-      const endCoord = line[1];
-      return {
-        start: {
-          x: getAxisValueFromCoordinate(startCoord, "x"),
-          y: getAxisValueFromCoordinate(startCoord, "y"),
-        },
-        end: {
-          x: getAxisValueFromCoordinate(endCoord, "x"),
-          y: getAxisValueFromCoordinate(endCoord, "y"),
-        },
-      };
-    });
-};
-const runSolution = (input: string[]): any => {
-  // Solution goes here..
+export const doPointsBelongOnSameAxis = ([
+  startCoord,
+  endCoord,
+]: string[]): boolean =>
+  getAxisValueFromCoordinate(startCoord, "x") ===
+    getAxisValueFromCoordinate(endCoord, "x") ||
+  getAxisValueFromCoordinate(startCoord, "y") ===
+    getAxisValueFromCoordinate(endCoord, "y");
 
-  const coordinates = getCoordinates(input);
+const computeCounts = (lines: string[][]) => {
+  const counts: any = {};
 
-  const knownGradients = [];
+  for (const line of lines) {
+    const _xStart = getAxisValueFromCoordinate(line[0], "x");
+    const _xStop = getAxisValueFromCoordinate(line[1], "x");
+    const _yStart = getAxisValueFromCoordinate(line[0], "y");
+    const _yStop = getAxisValueFromCoordinate(line[1], "y");
 
-  for (const { start, end } of coordinates) {
-    const dy = end.y - start.y;
-    const dx = end.x - start.x;
-    console.log({ start, end });
-    const gradient = Math.abs(dy / dx);
-    knownGradients.push(gradient);
+    const [xStart, xStop] =
+      _xStart < _xStop ? [_xStart, _xStop] : [_xStop, _xStart];
+    const [yStart, yStop] =
+      _yStart < _yStop ? [_yStart, _yStop] : [_yStop, _yStart];
+
+    for (let i = xStart; i <= xStop; i++) {
+      for (let j = yStart; j <= yStop; j++) {
+        const key = `${i},${j}`;
+        if (counts[key] !== undefined) {
+          counts[key]++;
+        } else {
+          counts[key] = 1;
+        }
+      }
+    }
   }
 
-  return knownGradients;
+  return counts;
 };
 
-const solution = runSolution(input);
-logger.logSolution(solution);
+const runSolution = (input: string[]): any => {
+  // Solution goes here..
+  const relevantLines = input
+    .map((value) => value.split("->").map((coordinate) => coordinate.trim()))
+    .filter(doPointsBelongOnSameAxis);
+
+  const counts = computeCounts(relevantLines);
+
+  console.log(counts);
+
+  let result = 0;
+
+  for (const key in counts) {
+    if (counts[key] > 1) {
+      result++;
+    }
+  }
+
+  return result;
+};
+
+export default runSolution;

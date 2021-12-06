@@ -1,5 +1,3 @@
-import input from "./index";
-import logger from "../../lib/logger";
 class Submarine {
   verticalPosition: number;
   horizontalPosition: number;
@@ -68,5 +66,4 @@ const runSolution = (input: string[]): any => {
   return submarine.getFinalValue();
 };
 
-const solution = runSolution(input);
-logger.logSolution(solution);
+export default runSolution;

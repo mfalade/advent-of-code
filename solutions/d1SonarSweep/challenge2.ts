@@ -1,6 +1,3 @@
-import input from "./index";
-import logger from "../../lib/logger";
-
 const sum = (arrayOfNumbers: number[]): number => {
   return arrayOfNumbers.reduce((current, accumulator) => {
     return current + accumulator;
@@ -9,10 +6,11 @@ const sum = (arrayOfNumbers: number[]): number => {
 
 const solve = (measurements: number[]): number => {
   let count: number = 0;
+  const offset = 3;
 
-  for (let i = 0; i < measurements.length - 3; i++) {
-    const firstSet = measurements.slice(i, i + 3);
-    const secondSet = measurements.slice(i + 1, i + 4);
+  for (let i = 0; i < measurements.length - offset; i++) {
+    const firstSet = measurements.slice(i, i + offset);
+    const secondSet = measurements.slice(i + 1, i + 1 + offset);
 
     if (sum(firstSet) < sum(secondSet)) {
       count++;
@@ -27,5 +25,4 @@ const runSolution = (input: string[]): any => {
   return solve(allMeasurements);
 };
 
-const solution = runSolution(input);
-logger.logSolution(solution);
+export default runSolution;

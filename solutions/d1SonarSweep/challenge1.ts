@@ -1,6 +1,3 @@
-import input from "./index";
-import logger from "../../lib/logger";
-
 const getNumberOfLargerMeasurements = (measurements: number[]): number => {
   let count: number = 0;
 
@@ -21,5 +18,4 @@ const runSolution = (input: string[]): any => {
   return getNumberOfLargerMeasurements(allMeasurements);
 };
 
-const solution = runSolution(input);
-logger.logSolution(solution);
+export default runSolution;

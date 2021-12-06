@@ -1,9 +1,5 @@
-import input from "./index";
-import logger from "../../lib/logger";
-
 import { createGameFromInput, IBoard, IGame } from "./utils";
 
-const { draws, boards }: IGame = createGameFromInput(input);
 const MARKER = "FOUND:";
 
 const markBoardIfHasDraw = (board: IBoard, draw: string): void => {
@@ -68,19 +64,12 @@ const calculateFinalScore = (board: IBoard, winningDraw: string): number => {
   return Number(winningDraw) * sumUnmarked;
 };
 
-const run = () => {
-  const { winningDraw, winningBoard } = playGame(boards, draws);
-  console.log(winningBoard, "winning board ");
-  const finalValue = calculateFinalScore(winningBoard, winningDraw);
-  console.log({ winningDraw, winningBoard, finalValue });
-};
-
 const runSolution = (input: string[]): any => {
   // Solution goes here..
+  const { draws, boards }: IGame = createGameFromInput(input);
   const { winningDraw, winningBoard } = playGame(boards, draws);
   console.log(winningBoard, "winning board ");
   return calculateFinalScore(winningBoard, winningDraw);
 };
 
-const solution = runSolution(input);
-logger.logSolution(solution);
+export default runSolution;

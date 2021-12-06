@@ -1,4 +1,5 @@
 import input from "./index";
+import logger from "../../lib/logger";
 import { createGameFromInput, IBoard, IGame } from "./utils";
 
 const { draws, boards }: IGame = createGameFromInput(input);
@@ -71,7 +72,7 @@ const calculateFinalScore = (board: IBoard, draw: string): number => {
   return Number(draw) * sumUnmarked;
 };
 
-const run = () => {
+const runSolution = (input: string[]): any => {
   const { losingBoard } = playGame(boards, draws);
   let winningDraw = "";
 
@@ -87,8 +88,8 @@ const run = () => {
     }
   }
 
-  const finalValue = calculateFinalScore(losingBoard, winningDraw);
-  console.log({ winningDraw, losingBoard, finalValue });
+  return calculateFinalScore(losingBoard, winningDraw);
 };
 
-run();
+const solution = runSolution(input);
+logger.logSolution(solution);

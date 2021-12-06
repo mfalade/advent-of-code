@@ -1,11 +1,5 @@
 import input from "./index";
-
-const inputCommands: { command: string; value: number }[] = input.map(
-  (line) => {
-    const [command, value] = line.split(" ");
-    return { command, value: Number(value) };
-  }
-);
+import logger from "../../lib/logger";
 
 class Submarine {
   verticalPosition: number;
@@ -56,10 +50,21 @@ class Submarine {
   }
 }
 
-const submarine = new Submarine();
+const runSolution = (input: string[]): any => {
+  const inputCommands: { command: string; value: number }[] = input.map(
+    (line) => {
+      const [command, value] = line.split(" ");
+      return { command, value: Number(value) };
+    }
+  );
 
-for (const entry of inputCommands) {
-  submarine.getCommand(entry.command)(entry["value"]);
-}
+  const submarine = new Submarine();
 
-console.log(submarine.getFinalValue());
+  for (const entry of inputCommands) {
+    submarine.getCommand(entry.command)(entry["value"]);
+  }
+  return submarine.getFinalValue();
+};
+
+const solution = runSolution(input);
+logger.logSolution(solution);

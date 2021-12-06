@@ -1,6 +1,5 @@
 import input from "./index";
-
-const allMeasurements = input.map(Number);
+import logger from "../../lib/logger";
 
 const getNumberOfLargerMeasurements = (measurements: number[]): number => {
   let count: number = 0;
@@ -17,4 +16,10 @@ const getNumberOfLargerMeasurements = (measurements: number[]): number => {
   return count;
 };
 
-console.log(getNumberOfLargerMeasurements(allMeasurements));
+const runSolution = (input: string[]): any => {
+  const allMeasurements = input.map(Number);
+  return getNumberOfLargerMeasurements(allMeasurements);
+};
+
+const solution = runSolution(input);
+logger.logSolution(solution);

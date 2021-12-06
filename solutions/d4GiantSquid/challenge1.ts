@@ -1,4 +1,6 @@
 import input from "./index";
+import logger from "../../lib/logger";
+
 import { createGameFromInput, IBoard, IGame } from "./utils";
 
 const { draws, boards }: IGame = createGameFromInput(input);
@@ -14,8 +16,6 @@ const markBoardIfHasDraw = (board: IBoard, draw: string): void => {
 };
 
 const checkBoardForWins = (board: IBoard): boolean => {
-  let hasWon = false;
-
   for (const row of board) {
     if (row.every((item) => item.startsWith(MARKER))) {
       return true;
@@ -29,7 +29,7 @@ const checkBoardForWins = (board: IBoard): boolean => {
     }
   }
 
-  return hasWon;
+  return false;
 };
 
 const playGame = (
@@ -75,4 +75,12 @@ const run = () => {
   console.log({ winningDraw, winningBoard, finalValue });
 };
 
-run();
+const runSolution = (input: string[]): any => {
+  // Solution goes here..
+  const { winningDraw, winningBoard } = playGame(boards, draws);
+  console.log(winningBoard, "winning board ");
+  return calculateFinalScore(winningBoard, winningDraw);
+};
+
+const solution = runSolution(input);
+logger.logSolution(solution);

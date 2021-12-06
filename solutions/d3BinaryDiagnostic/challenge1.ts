@@ -1,4 +1,5 @@
 import input from "./index";
+import logger from "../../lib/logger";
 
 const removeItemsNotMatchingPassValue = (
   bits: string[],
@@ -94,10 +95,11 @@ const scrubMin = (bits: string[], targetIndex: number = 0): string => {
   return scrubMin(trimmedBits, targetIndex + 1);
 };
 
-const o2GenRating = scrubMax(input);
-const co2ScrubRating = scrubMin(input);
+const runSolution = (input: string[]): any => {
+  const o2GenRating = scrubMax(input);
+  const co2ScrubRating = scrubMin(input);
+  return parseInt(o2GenRating, 2) * parseInt(co2ScrubRating, 2);
+};
 
-console.log({ o2GenRating, co2ScrubRating });
-console.log({ o2: parseInt(o2GenRating, 2), co2: parseInt(co2ScrubRating, 2) });
-
-console.log(parseInt(o2GenRating, 2) * parseInt(co2ScrubRating, 2));
+const solution = runSolution(input);
+logger.logSolution(solution);

@@ -1,4 +1,5 @@
 import input from "./index";
+import logger from "../../lib/logger";
 
 const colCounts = input[0]
   .split("")
@@ -35,10 +36,9 @@ const epsilonRate = colCounts
   })
   .join("");
 
-console.log(colCounts, "col counts ");
+const runSolution = (input: string[]): any => {
+  return parseInt(gammaRate, 2) * parseInt(epsilonRate, 2);
+};
 
-console.log(gammaRate, parseInt(gammaRate, 2), "gammaRate value");
-console.log(epsilonRate, parseInt(epsilonRate, 2), "epsilonRate value");
-
-const finalResult = parseInt(gammaRate, 2) * parseInt(epsilonRate, 2);
-console.log(finalResult, "final ...");
+const solution = runSolution(input);
+logger.logSolution(solution);

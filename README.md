@@ -4,7 +4,7 @@
 
 A collection of my solutions to the 2021 Advent of Code challenge.
 
-# Usage
+## Usage
 - To create a new challenge directory, run
 ```
 yarn mkdir <challengeDirecoryName>
@@ -13,14 +13,20 @@ yarn mkdir <challengeDirecoryName>
 ```
 
 
-# Testing solutions
+## Testing your solutions
 
 ```
-yarn test src/squidGame/challengeOne.ts
-yarn test src/squidGame/challengeTwo.ts
+// To test both challenge1 and challenge2
+
+yarn test src/squidGame
+
+// Optionally,
+
+yarn test src/squidGame/challenge1.ts
+yarn test src/squidGame/challenge2.ts
 ```
 
-### Lib
+## Lib
 I have a few utilities to help process the input data to a ready-to-consume format.
 This currently reads all the input value in-memory. A follup up improvement would stream the values from the input file as opposed to loading them in-memory.
 

@@ -23,11 +23,11 @@ export const doPointsBelongOnSameAxis = ([
 const computeCounts = (lines: string[][]) => {
   const counts: any = {};
 
-  for (const line of lines) {
-    const _xStart = getAxisValueFromCoordinate(line[0], "x");
-    const _xStop = getAxisValueFromCoordinate(line[1], "x");
-    const _yStart = getAxisValueFromCoordinate(line[0], "y");
-    const _yStop = getAxisValueFromCoordinate(line[1], "y");
+  for (const [startCoord, stopCoord] of lines) {
+    const _xStart = getAxisValueFromCoordinate(startCoord, "x");
+    const _yStart = getAxisValueFromCoordinate(startCoord, "y");
+    const _xStop = getAxisValueFromCoordinate(stopCoord, "x");
+    const _yStop = getAxisValueFromCoordinate(stopCoord, "y");
 
     const [xStart, xStop] =
       _xStart < _xStop ? [_xStart, _xStop] : [_xStop, _xStart];
@@ -36,11 +36,13 @@ const computeCounts = (lines: string[][]) => {
 
     for (let i = xStart; i <= xStop; i++) {
       for (let j = yStart; j <= yStop; j++) {
-        const key = `${i},${j}`;
-        if (counts[key] !== undefined) {
-          counts[key]++;
-        } else {
-          counts[key] = 1;
+        if (xStart === xStop || yStart === yStop) {
+          const key = `${i},${j}`;
+          if (counts[key] !== undefined) {
+            counts[key]++;
+          } else {
+            counts[key] = 1;
+          }
         }
       }
     }
@@ -51,13 +53,11 @@ const computeCounts = (lines: string[][]) => {
 
 const runSolution = (input: string[]): any => {
   // Solution goes here..
-  const relevantLines = input
-    .map((value) => value.split("->").map((coordinate) => coordinate.trim()))
-    .filter(doPointsBelongOnSameAxis);
+  const lines = input.map((value) =>
+    value.split("->").map((coordinate) => coordinate.trim())
+  );
 
-  const counts = computeCounts(relevantLines);
-
-  console.log(counts);
+  const counts = computeCounts(lines);
 
   let result = 0;
 

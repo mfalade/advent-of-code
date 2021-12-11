@@ -2,7 +2,7 @@
 
 ### Solved with Typescript
 
-A collection of my solutions to the 2021 Advent of Code challenge.
+A collection of my solutions to the Advent of Code challenge.
 
 ## Usage
 - To create a new challenge directory, run
@@ -11,19 +11,20 @@ yarn mkdir <challengeDirecoryName>
 
 # e.g yarn mkdir squidGame
 ```
+This would create a directory named: `2021/squidGame`. The format is `<currentYear>/<dirName>`.
 
 
-## Testing your solutions
+## Running your solutions
 
 ```
-// To test both challenge1 and challenge2
+// To test both challenges
 
-yarn test src/squidGame
+yarn test 2021/squidGame
 
-// Optionally,
+// Optionally, you can run individual challenges like so
 
-yarn test src/squidGame/challenge1.ts
-yarn test src/squidGame/challenge2.ts
+yarn test 2021/squidGame/challenge1.ts
+yarn test 2021/squidGame/challenge2.ts
 ```
 
 ## Lib

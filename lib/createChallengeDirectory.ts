@@ -26,8 +26,12 @@ const input: string[] = getParsedInput({
   challengeDirName: CHALLENGE_DIR_NAME,
 });
 
-const challenge1Solution = runSolutionForChallenge1(input);
-const challenge2Solution = runSolutionForChallenge2(input);
+const inputTransformer = (input: string[]): any => {
+  return input;
+};
+
+const challenge1Solution = runSolutionForChallenge1(inputTransformer(input));
+const challenge2Solution = runSolutionForChallenge2(inputTransformer(input));
 
 logger.logSolution("Solution to challenge 1", challenge1Solution);
 logger.logSolution("Solution to challenge 2", challenge2Solution);

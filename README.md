@@ -1,8 +1,8 @@
-# Advent of Code Challenge 2021
+# Advent of Code Challenge
 
 ### Solved with Typescript
 
-A collection of my solutions to the Advent of Code challenge.
+A collection of my solutions to the [Advent of Code challenge](https://adventofcode.com/).
 
 ## Usage
 - To create a new challenge directory, run
@@ -18,11 +18,9 @@ This would create a directory named: `2021/squidGame`. The format is `<currentYe
 
 ```
 // To test both challenges
-
 yarn test 2021/squidGame
 
 // Optionally, you can run individual challenges like so
-
 yarn test 2021/squidGame/challenge1.ts
 yarn test 2021/squidGame/challenge2.ts
 ```

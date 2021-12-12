@@ -10,11 +10,11 @@ class Submarine {
   getCommand(commandName: string) {
     switch (commandName) {
       case "forward":
-        return this.forward.bind(this);
+        return this.forward;
       case "down":
-        return this.down.bind(this);
+        return this.down;
       case "up":
-        return this.up.bind(this);
+        return this.up;
       default:
         throw new Error(`Received an unknown command: ${commandName}`);
     }
@@ -58,7 +58,7 @@ const runSolution = (input: string[]): any => {
   const submarine = new Submarine();
 
   for (const entry of inputCommands) {
-    submarine.getCommand(entry.command)(entry["value"]);
+    submarine.getCommand(entry.command).call(submarine, entry["value"]);
   }
   return submarine.getFinalValue();
 };

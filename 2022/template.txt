@@ -1,0 +1,7 @@
+def challenge_1(challenge_input):
+    print(challenge_input)
+
+
+def challenge_2(challenge_input):
+    print(challenge_input)
+

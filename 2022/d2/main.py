@@ -8,8 +8,6 @@ play_weight = {"X": 1, "Y": 2, "Z": 3}
 
 
 def challenge_1(challenge_input):
-    print(challenge_input)
-
     score = 0
 
     for item in challenge_input.split("\n"):

@@ -2,3 +2,4 @@ node_modules
 dist/
 src/**/input.txt
 .vscode
+__pycache__

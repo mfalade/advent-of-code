@@ -23,10 +23,16 @@ if __name__ == "__main__":
     directory_name = f'd{current_day}'
 
     if not os.path.exists(directory_name):
+        print('..................................')
+        print(f" Bootstraping challenge for day {current_day}")
+        print('..................................\n')
         bootstrap_directory(directory_name=directory_name)
 
     challenge = importlib.import_module(f"{directory_name}.main")
     challenge_input = read_input_file(directory_name=directory_name)
     
+    print('..........................')
+    print(f" Running solutions for {directory_name}")
+    print('..........................\n')
     challenge.challenge_1(challenge_input)
     challenge.challenge_2(challenge_input)

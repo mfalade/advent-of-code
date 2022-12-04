@@ -1,6 +1,3 @@
-import os
-
-
 winning_plays = ["AY", "BZ", "CX"]
 draw_plays = ["AX", "BY", "CZ"]
 
@@ -10,15 +7,12 @@ strategy_weight = {"X": 1, "Y": 2, "Z": 3}
 play_weight = {"X": 1, "Y": 2, "Z": 3}
 
 
-def challenge_1():
-    with open(os.path.join(os.curdir, "input.txt"), "r") as input_file:
-        content = input_file.read()
-
-    print(content)
+def challenge_1(challenge_input):
+    print(challenge_input)
 
     score = 0
 
-    for item in content.split("\n"):
+    for item in challenge_input.split("\n"):
         play = item.replace(" ", "")
         strategy = play[1]
         score += play_weight.get(strategy)
@@ -31,7 +25,7 @@ def challenge_1():
     print(score)
 
 
-def challenge_1():
+def challenge_2(challenge_input):
     draw_picks = {
         "A": "X",
         "B": "Y",
@@ -47,12 +41,10 @@ def challenge_1():
         "B": "X",
         "C": "Y",
     }
-    with open(os.path.join(os.curdir, "input.txt"), "r") as input_file:
-        content = input_file.read()
 
     score = 0
 
-    for item in content.split("\n"):
+    for item in challenge_input.split("\n"):
         play = item.replace(" ", "")
         [opponents_pick, my_pick] = play
 
